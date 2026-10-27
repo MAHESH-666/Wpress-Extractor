@@ -1,37 +1,35 @@
-# Wpress-Extractor Windows/Mac
-A simple windows app that allows you to extract .wpress files created by the awesome All-in-one-Wp-Migration Wordpress plugin
+# Wpress Extractor
 
-## Credits
-The extractor source code : [https://github.com/yani-/wpress](https://github.com/yani-/wpress). I had to make a tiny modification to their reader.go file to allow it to run on Windows systems.
+A small Go-based utility for extracting WordPress migration archives with the `.wpress` extension. This repository contains a Go source tree and prebuilt binaries for some platforms.
 
-## Download link
-[Windows - Download now](https://github.com/fifthsegment/Wpress-Extractor/raw/master/dist/wpress-extractor.exe)
+## Purpose
 
-[Mac - Download now](https://github.com/fifthsegment/Wpress-Extractor/blob/master/dist/mac/wpress_extractor?raw=true)
-*IMPORTANT FOR MAC: Don't forget to make the binary executable by running a  `chmod +x wpress_extractor` on the downloaded file via the Terminal.
+The tool is intended to unpack a `.wpress` archive created by the All-in-One WP Migration WordPress plugin into files that can be inspected or restored manually.
 
+## Technology
 
-## How to extract/open .wpress files ?
-Simply provide a path to your downloaded .wpress file as the first commandline argument to the program.
-`./wpress_extractor /path/to/my/backup.wpress`
+- Go
+- Command-line file/archive handling
+- Windows/macOS binaries are included in the repository
 
-## I'm not very technical - How to use this thing?
-### Windows Instructions
+## Usage
 
-Simply download the extractor then drop your.wpress file onto the executable (Wpress-extractor.exe). ([Thanks hughc](https://github.com/hughc)!)
+Download or build the executable appropriate for your operating system, then pass the archive path as the first command-line argument:
 
+```bash
+./wpress-extractor /path/to/backup.wpress
+```
 
-OR
+On Windows, run the executable from Command Prompt or PowerShell and pass the full path to the archive. Use a separate output directory and keep an untouched backup of the original file.
 
+## Build from source
 
+Install a Go toolchain compatible with the source, clone the repository, and inspect the module/source layout before building. The prebuilt `dist/` files may not be reproducible from the checked-in source without verifying the original build instructions.
 
-1. Download the extractor 
-2. Create a directory where you wish your files to be extracted to
-3. Copy the downloaded extractor to that directory
-4. Copy your .wpress file to that directory as well
-5. Open up a command prompt
-6. CD into the directory you just created, let's say its C:\Wordpress-Backup. The command you'll run would be `cd C:\Wordpress-Backup`
-7. Now run the following command `wpress-extractor <name-of-your.wpress file>`. For example my .wpress file was fifthsegment.wpress so the command I ran was `wpress-extractor fifthsegment.wpress`.
-8. You'll find your files extracted into the same directory where the extractor was run. In my case it was `C:\Wordpress-Backup`
+## Credits and licensing
 
+This repository acknowledges the original implementation at [yani-/wpress](https://github.com/yani-/wpress); the original README describes a small modification to support Windows execution. Review the upstream project's license and preserve required attribution when distributing derived code or binaries.
 
+## Safety
+
+Only extract archives you are authorized to access. Treat the extracted WordPress files as potentially sensitive; backups can contain credentials, user data, plugins, and configuration files. Do not upload private backups to public repositories.
